@@ -177,6 +177,12 @@ public class ValidationItemControllerV2 {
     @PostMapping("/add")
     public String addItemV4(@ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
 
+
+        if(bindingResult.hasErrors()){
+            log.info("errors = {}",bindingResult);
+            return "validation/v2/addform";
+        }
+
         log.info("objectName={}", bindingResult.getObjectName());
         log.info("target={}", bindingResult.getTarget());
 
@@ -202,13 +208,6 @@ public class ValidationItemControllerV2 {
 
         }
 
-
-        //검증 실패
-        if (bindingResult.hasErrors()) {
-            log.info("errors = {}",bindingResult);
-            return "validation/v2/addform";
-
-        }
 
         // 검증 성공
 
