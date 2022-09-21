@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 @Data
 public class Item {
 
-    @NotNull
     private Long id;
 
     @NotBlank
